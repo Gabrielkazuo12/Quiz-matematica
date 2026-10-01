@@ -1,0 +1,787 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", Arial, sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    position: relative;
+
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #06164a 0%,
+            #0755d9 50%,
+            #00a8ff 100%
+        );
+}
+
+
+/* =========================================
+   SÍMBOLOS MATEMÁTICOS
+========================================= */
+
+.simbolo {
+    position: fixed;
+
+    color: rgba(255, 255, 255, 0.08);
+
+    font-size: 70px;
+
+    font-weight: 800;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+.simbolo-1 {
+    top: 8%;
+    left: 8%;
+    transform: rotate(-15deg);
+}
+
+.simbolo-2 {
+    top: 20%;
+    right: 8%;
+    font-size: 90px;
+    transform: rotate(12deg);
+}
+
+.simbolo-3 {
+    bottom: 15%;
+    left: 7%;
+    font-size: 85px;
+    transform: rotate(10deg);
+}
+
+.simbolo-4 {
+    bottom: 8%;
+    right: 15%;
+    transform: rotate(-10deg);
+}
+
+.simbolo-5 {
+    top: 45%;
+    left: 2%;
+    font-size: 55px;
+}
+
+.simbolo-6 {
+    top: 60%;
+    right: 3%;
+    font-size: 90px;
+}
+
+.simbolo-7 {
+    bottom: 35%;
+    right: 20%;
+    font-size: 50px;
+}
+
+
+/* =========================================
+   TELAS
+========================================= */
+
+.tela {
+    width: 100%;
+
+    max-width: 700px;
+
+    min-height: 470px;
+
+    padding: 45px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-radius: 25px;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.28),
+        0 0 0 5px rgba(255, 255, 255, 0.10);
+
+    animation: aparecer 0.35s ease;
+}
+
+.escondido {
+    display: none !important;
+}
+
+
+/* =========================================
+   ANIMAÇÃO
+========================================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================
+   TÍTULOS
+========================================= */
+
+h1 {
+    color: #0755d9;
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #172554;
+
+    font-size: 23px;
+
+    margin-bottom: 20px;
+}
+
+p {
+    color: #475569;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   ÍCONE
+========================================= */
+
+.icone-matematica {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+
+    color: white;
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0755d9,
+            #00a8ff
+        );
+
+    box-shadow:
+        0 10px 20px rgba(0, 90, 220, 0.30);
+
+    transform: rotate(-3deg);
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+input {
+    width: 100%;
+
+    padding: 16px 18px;
+
+    margin-bottom: 22px;
+
+    border: 2px solid #cbd5e1;
+
+    border-radius: 12px;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+input:focus {
+    outline: none;
+
+    border-color: #0879ff;
+
+    box-shadow:
+        0 0 0 4px rgba(8, 121, 255, 0.12);
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+button {
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 15px 28px;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0755d9,
+            #008cff
+        );
+
+    box-shadow:
+        0 6px 15px rgba(0, 92, 220, 0.25);
+
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 20px rgba(0, 92, 220, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   RANKING
+========================================= */
+
+.botao-ranking {
+    margin-left: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #f97316
+        );
+}
+
+
+/* =========================================
+   SÉRIES
+========================================= */
+
+.opcoes-serie {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.serie {
+    background: #f8fafc;
+
+    color: #0755d9;
+
+    border: 2px solid #dbeafe;
+
+    box-shadow: none;
+}
+
+.serie:hover {
+    background: #eff6ff;
+
+    color: #0755d9;
+
+    border-color: #3b82f6;
+
+    box-shadow: none;
+}
+
+.serie.selecionada {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0755d9,
+            #008cff
+        );
+
+    border-color: #0755d9;
+}
+
+
+/* =========================================
+   DICAS
+========================================= */
+
+.informacao-dica {
+    padding: 15px;
+
+    margin-bottom: 25px;
+
+    border-radius: 12px;
+
+    background: #eff6ff;
+
+    color: #0755d9;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    border: 1px solid #bfdbfe;
+}
+
+
+/* =========================================
+   BARRA DA QUESTÃO
+========================================= */
+
+.barra-superior {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.numero-questao {
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    color: #0755d9;
+
+    background: #dbeafe;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+.valor-questao {
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    color: #047857;
+
+    background: #d1fae5;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   PERGUNTA
+========================================= */
+
+.pergunta {
+    color: #172554;
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   BOTÕES DE DICA
+========================================= */
+
+.area-dicas {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+    flex-wrap: wrap;
+}
+
+.botao-dica {
+    padding: 10px 15px;
+
+    font-size: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #f97316
+        );
+}
+
+.botao-dica:disabled {
+    background: #cbd5e1;
+
+    color: #64748b;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+.texto-dica {
+    padding: 13px;
+
+    margin-bottom: 15px;
+
+    border-radius: 12px;
+
+    color: #92400e;
+
+    background: #fef3c7;
+
+    border: 1px solid #fcd34d;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   ALTERNATIVAS
+========================================= */
+
+.alternativas {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.alternativa {
+    width: 100%;
+
+    text-align: left;
+
+    color: #1e293b;
+
+    background: #f8fafc;
+
+    border: 2px solid #e2e8f0;
+
+    box-shadow: none;
+}
+
+.alternativa:hover {
+    color: #0755d9;
+
+    background: #eff6ff;
+
+    border-color: #60a5fa;
+
+    box-shadow: none;
+}
+
+.alternativa.selecionada {
+    color: #0755d9;
+
+    background: #dbeafe;
+
+    border-color: #0755d9;
+}
+
+
+/* =========================================
+   NAVEGAÇÃO
+========================================= */
+
+.navegacao-questao {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+.botao-voltar {
+    background:
+        linear-gradient(
+            135deg,
+            #64748b,
+            #475569
+        );
+}
+
+.btn-proximo {
+    flex: 1;
+}
+
+.btn-proximo:disabled {
+    background: #94a3b8;
+
+    box-shadow: none;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
+   RESULTADO
+========================================= */
+
+.pontuacao {
+    color: #0755d9;
+
+    font-size: 65px;
+
+    font-weight: 800;
+
+    margin: 20px 0;
+}
+
+.mensagem {
+    max-width: 550px;
+
+    margin: 0 auto 25px;
+}
+
+.botoes-resultado {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================
+   RANKING
+========================================= */
+
+.lista-ranking {
+    width: 100%;
+
+    max-height: 280px;
+
+    overflow-y: auto;
+
+    margin-bottom: 25px;
+
+    padding-right: 5px;
+}
+
+.item-ranking {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 14px 16px;
+
+    margin-bottom: 10px;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    border: 2px solid #e2e8f0;
+}
+
+.posicao-ranking {
+    min-width: 40px;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    color: #0755d9;
+}
+
+.nome-ranking {
+    flex: 1;
+
+    text-align: left;
+
+    color: #1e293b;
+
+    font-weight: 700;
+}
+
+.pontos-ranking {
+    color: #047857;
+
+    font-weight: 800;
+}
+
+.botao-limpar {
+    margin-left: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
+}
+
+
+/* =========================================
+   AUTOR
+========================================= */
+
+.autor {
+    position: fixed;
+
+    right: 20px;
+    bottom: 15px;
+
+    z-index: 10;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    font-style: italic;
+
+    letter-spacing: 0.5px;
+
+    opacity: 0.9;
+
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .tela {
+        padding: 30px 20px;
+
+        min-height: 450px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .pergunta {
+        font-size: 20px;
+    }
+
+    .opcoes-serie {
+        grid-template-columns: 1fr;
+    }
+
+    .barra-superior {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .navegacao-questao {
+        flex-direction: column;
+    }
+
+    .botao-voltar,
+    .btn-proximo {
+        width: 100%;
+    }
+
+    .botao-ranking {
+        margin-left: 0;
+
+        margin-top: 10px;
+    }
+
+    .autor {
+        right: 10px;
+
+        bottom: 8px;
+
+        font-size: 10px;
+    }
+
+    .item-ranking {
+        padding: 12px 10px;
+    }
+
+}

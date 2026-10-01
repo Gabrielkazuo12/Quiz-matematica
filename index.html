@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz Matemático</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Símbolos matemáticos do fundo -->
+    <div class="simbolo simbolo-1">π</div>
+    <div class="simbolo simbolo-2">√</div>
+    <div class="simbolo simbolo-3">∑</div>
+    <div class="simbolo simbolo-4">x²</div>
+    <div class="simbolo simbolo-5">÷</div>
+    <div class="simbolo simbolo-6">∞</div>
+    <div class="simbolo simbolo-7">%</div>
+
+
+    <!-- ============================
+         TELA INICIAL
+    ============================= -->
+
+    <main id="telaInicial" class="tela">
+
+        <div class="icone-matematica">
+            π
+        </div>
+
+        <h1>Quiz Matemático</h1>
+
+        <p>
+            Teste seus conhecimentos, enfrente desafios
+            e descubra o quanto você sabe de matemática!
+        </p>
+
+        <button onclick="mostrarCadastro()">
+            Você quer jogar?
+        </button>
+
+        <button
+            class="botao-ranking"
+            onclick="mostrarRanking()">
+            🏆 Ver Ranking
+        </button>
+
+    </main>
+
+
+    <!-- ============================
+         CADASTRO
+    ============================= -->
+
+    <main id="telaCadastro" class="tela escondido">
+
+        <div class="icone-matematica">
+            ∑
+        </div>
+
+        <h1>Vamos começar!</h1>
+
+        <p>Digite seu nome:</p>
+
+        <input
+            type="text"
+            id="nome"
+            placeholder="Digite seu nome"
+            maxlength="30">
+
+        <p>Qual é a sua série?</p>
+
+        <div class="opcoes-serie">
+
+            <button
+                class="serie"
+                onclick="selecionarSerie(1, this)">
+                1º ANO
+            </button>
+
+            <button
+                class="serie"
+                onclick="selecionarSerie(2, this)">
+                2º ANO
+            </button>
+
+            <button
+                class="serie"
+                onclick="selecionarSerie(3, this)">
+                3º ANO
+            </button>
+
+        </div>
+
+        <button onclick="continuarCadastro()">
+            Continuar
+        </button>
+
+    </main>
+
+
+    <!-- ============================
+         PREPARAÇÃO
+    ============================= -->
+
+    <main id="telaPreparacao" class="tela escondido">
+
+        <div class="icone-matematica">
+            √
+        </div>
+
+        <h1>Está preparado?</h1>
+
+        <h2 id="boasVindas"></h2>
+
+        <p id="textoSerie"></p>
+
+        <p>
+            Você responderá 10 questões de matemática
+            de acordo com o nível da sua série.
+        </p>
+
+        <div class="informacao-dica">
+            💡 Você terá 3 dicas por questão.
+            Cada dica utilizada reduz 0,25 ponto
+            do valor daquela questão.
+        </div>
+
+        <button onclick="iniciarQuiz()">
+            Iniciar Quiz
+        </button>
+
+    </main>
+
+
+    <!-- ============================
+         TELA DO QUIZ
+    ============================= -->
+
+    <main id="telaQuiz" class="tela escondido">
+
+        <div class="barra-superior">
+
+            <div
+                class="numero-questao"
+                id="numeroQuestao">
+            </div>
+
+            <div
+                class="valor-questao"
+                id="valorQuestao">
+                Valor: 1,00
+            </div>
+
+        </div>
+
+
+        <div
+            class="pergunta"
+            id="pergunta">
+        </div>
+
+
+        <!-- DICAS -->
+
+        <div class="area-dicas">
+
+            <button
+                id="btnDica1"
+                class="botao-dica"
+                onclick="usarDica(1)">
+                💡 Dica 1
+            </button>
+
+            <button
+                id="btnDica2"
+                class="botao-dica"
+                onclick="usarDica(2)">
+                💡 Dica 2
+            </button>
+
+            <button
+                id="btnDica3"
+                class="botao-dica"
+                onclick="usarDica(3)">
+                💡 Dica 3
+            </button>
+
+        </div>
+
+
+        <div
+            id="textoDica"
+            class="texto-dica escondido">
+        </div>
+
+
+        <!-- ALTERNATIVAS -->
+
+        <div
+            class="alternativas"
+            id="alternativas">
+        </div>
+
+
+        <!-- NAVEGAÇÃO -->
+
+        <div class="navegacao-questao">
+
+            <button
+                id="btnVoltar"
+                class="botao-voltar"
+                onclick="questaoAnterior()">
+                ← Voltar
+            </button>
+
+            <button
+                id="btnProximo"
+                class="btn-proximo"
+                onclick="proximaQuestao()"
+                disabled>
+                Próxima →
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- ============================
+         RESULTADO
+    ============================= -->
+
+    <main id="telaResultado" class="tela escondido">
+
+        <div class="icone-matematica">
+            ✓
+        </div>
+
+        <h1>Quiz finalizado!</h1>
+
+        <h2 id="nomeResultado"></h2>
+
+        <p>Sua pontuação foi:</p>
+
+        <div
+            class="pontuacao"
+            id="pontuacao">
+        </div>
+
+        <p
+            class="mensagem"
+            id="mensagemFinal">
+        </p>
+
+
+        <div class="botoes-resultado">
+
+            <button onclick="mostrarRanking()">
+                🏆 Ver Ranking
+            </button>
+
+            <button onclick="jogarNovamente()">
+                Jogar novamente
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- ============================
+         RANKING
+    ============================= -->
+
+    <main id="telaRanking" class="tela escondido">
+
+        <div class="icone-matematica">
+            🏆
+        </div>
+
+        <h1>Ranking</h1>
+
+        <p>
+            Confira os melhores resultados registrados neste navegador.
+        </p>
+
+        <div
+            id="listaRanking"
+            class="lista-ranking">
+        </div>
+
+        <button onclick="voltarDoRanking()">
+            ← Voltar
+        </button>
+
+        <button
+            class="botao-limpar"
+            onclick="limparRanking()">
+            Limpar ranking
+        </button>
+
+    </main>
+
+
+    <!-- AUTOR -->
+
+    <div class="autor">
+        Gabriel Kazuo Iwazaki • 2007
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
